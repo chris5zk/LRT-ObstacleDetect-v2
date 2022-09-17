@@ -42,7 +42,7 @@ def parse_args():
     parser.add_argument('--a', help='pidnet-s, pidnet-m or pidnet-l', default='pidnet-l', type=str)
     parser.add_argument('--c', help='cityscapes pretrained or not', type=bool, default=True)
     parser.add_argument('--p', help='dir for pretrained model', default='D:\Repository\RVL\Code\Model\PIDNet\pretrained_models\cityscapes\PIDNet_L_Cityscapes_test.pt', type=str)
-    parser.add_argument('--r', help='root or dir for input images', default='D:\Repository\RVL\Code\Model\PIDNet\samples/', type=str)
+    parser.add_argument('--r', help='root or dir for input images', default='D:\Repository\RVL\Code\LRT-ObstacleDetect-v2\samples\\', type=str)
     parser.add_argument('--t', help='the format of input images (.jpg, .png, ...)', default='.jpg', type=str)
 
     args = parser.parse_args()
@@ -75,7 +75,6 @@ if __name__ == '__main__':
     args = parse_args()
     images_list = glob.glob(args.r+'*'+args.t)
     sv_path = args.r+'outputs/'
-    print(sv_path)
     model = models.pidnet.get_pred_model(args.a, 19 if args.c else 11)
     model = load_pretrained(model, args.p).cuda()
     model.eval()

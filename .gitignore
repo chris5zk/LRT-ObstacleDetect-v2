@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 
 # our ignore
-output/
 log/
 
 # C extensions
