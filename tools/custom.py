@@ -16,25 +16,8 @@ from PIL import Image
 mean = [0.485, 0.456, 0.406]
 std = [0.229, 0.224, 0.225]
 
-color_map = [(128, 64,128),
-             (244, 35,232),
-             ( 70, 70, 70),
-             (102,102,156),
-             (190,153,153),
-             (153,153,153),
-             (250,170, 30),
-             (220,220,  0),
-             (107,142, 35),
-             (152,251,152),
-             ( 70,130,180),
-             (220, 20, 60),
-             (255,  0,  0),
-             (  0,  0,142),
-             (  0,  0, 70),
-             (  0, 60,100),
-             (  0, 80,100),
-             (  0,  0,230),
-             (119, 11, 32)]
+color_map = [( 70, 70, 70),
+             (102,102,156)]
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Custom Input')
@@ -75,12 +58,11 @@ if __name__ == '__main__':
     args = parse_args()
     images_list = glob.glob(args.r+'*'+args.t)
     sv_path = args.r+'outputs/'
-    model = models.pidnet.get_pred_model(args.a, 19 if args.c else 11)
+    model = models.pidnet.get_pred_model(args.a, 2)
     model = load_pretrained(model, args.p).cuda()
     model.eval()
     with torch.no_grad():
         for img_path in images_list:
-            print('c')
             img_name = img_path.split("\\")[-1]
             img = cv2.imread(os.path.join(args.r, img_name),
                                cv2.IMREAD_COLOR)

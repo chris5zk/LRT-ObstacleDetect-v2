@@ -5,6 +5,7 @@ __pycache__/
 
 # our ignore
 log/
+samples/outputs/
 
 # C extensions
 *.so
