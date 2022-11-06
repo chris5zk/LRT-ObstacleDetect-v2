@@ -269,9 +269,6 @@ if __name__ == '__main__':
     torch.cuda.empty_cache()
     FPS = 1000 / latency
 
-    print(f'iterations:{iterations}')
-    print(f'elapsed_time:{elapsed_time}')
-    print(f'latency:{latency}')
     print(f'FPS:{FPS}')
     
     

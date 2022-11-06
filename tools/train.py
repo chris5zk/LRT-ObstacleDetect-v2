@@ -170,7 +170,8 @@ def main():
     end_epoch = config.TRAIN.END_EPOCH
     num_iters = config.TRAIN.END_EPOCH * epoch_iters
     real_end = 120+1 if 'camvid' in config.DATASET.TRAIN_SET else end_epoch
-    
+
+    ep = 0
     for epoch in range(last_epoch, real_end):
 
         current_trainloader = trainloader
@@ -199,6 +200,10 @@ def main():
             best_mIoU = mean_IoU
             torch.save(model.module.state_dict(),
                     os.path.join(final_output_dir, 'best.pt'))
+
+        torch.save(model.module.state_dict(),
+                os.path.join(final_output_dir, f'weight_e{ep}.pt'))
+        ep += 1
         msg = 'Loss: {:.3f}, MeanIU: {: 4.4f}, Best_mIoU: {: 4.4f}'.format(
                     valid_loss, mean_IoU, best_mIoU)
         logging.info(msg)

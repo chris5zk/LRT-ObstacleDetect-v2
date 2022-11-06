@@ -17,7 +17,7 @@ DATASET:
 MODEL:
   NAME: pidnet_s
   NUM_OUTPUTS: 2
-  PRETRAINED: "pretrained_models/cityscapes/PIDNet_S_Cityscapes_test.pt"
+  PRETRAINED: "pretrained_models/imagenet/PIDNet_S_ImageNet.pth.tar"
 LOSS:
   USE_OHEM: true
   OHEMTHRES: 0.9
