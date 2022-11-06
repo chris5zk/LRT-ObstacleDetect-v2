@@ -2,7 +2,7 @@ CUDNN:
   BENCHMARK: true
   DETERMINISTIC: false
   ENABLED: true
-GPUS: (0,)
+GPUS: (0,1,2,3)
 OUTPUT_DIR: 'output'
 LOG_DIR: 'log'
 WORKERS: 0
@@ -17,7 +17,7 @@ DATASET:
 MODEL:
   NAME: pidnet_s
   NUM_OUTPUTS: 2
-  PRETRAINED: "pretrained_models/cityscapes/PIDNet_S_Cityscapes_test.pt"
+  PRETRAINED: "pretrained_models/imagenet/PIDNet_S_ImageNet.pth.tar"
 LOSS:
   USE_OHEM: true
   OHEMTHRES: 0.9
@@ -35,7 +35,7 @@ TRAIN:
   END_EPOCH: 200
   RESUME: false
   OPTIMIZER: sgd
-  LR: 0.0005
+  LR: 0.0007
   WD: 0.0005
   MOMENTUM: 0.9
   NESTEROV: false
